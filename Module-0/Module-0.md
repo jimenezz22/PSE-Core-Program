@@ -2,88 +2,85 @@
 
 https://github.com/privacy-scaling-explorations/core-program/blob/main/2024/week0_course_primer.md
 
-## Qué es ZK
+## What is ZK
 
-Son protocolos de pruebas de conocimiento cero. En criptografía, una prueba de conocimiento cero (ZKPs) permite a una parte (el probador) demostrarle a otra parte (el verificador) que una declaración es verdadera sin revelar ninguna información adicional más allá de la veracidad de la declaración misma.
+Zero-knowledge proof protocols. In cryptography, a zero-knowledge proof (ZKP) allows one party (the prover) to demonstrate to another party (the verifier) that a statement is true without revealing any additional information beyond the veracity of the statement itself.
 
-## Principios de ZKPs
+## Principles of ZKPs
 
-Para que una prueba sea considerada de conocimiento cero, debe cumplir con las siguientes propiedades:
+For a proof to be considered zero-knowledge, it must satisfy the following properties:
 
-1. **Integridad (Completeness)**: Si la afirmación es verdadera, el prover puede convencer al verifier de que es cierto.
-2. **Solidez (Soundness)**: Si la afirmación es falsa, ningún prover deshonesto puede convencer al verifier de que es cierto, excepto con una probabilidad muy baja.
-3. **Conocimiento Cero (Zero-Knowledge)**: Si la afirmación es verdadera, el verifier no aprende nada más allá de la veracidad de la afirmación. No obtiene ninguna información adicional sobre el secreto o el dato subyacente.
+1. **Completeness**: If the statement is true, the prover can convince the verifier that it is true.
+2. **Soundness**: If the statement is false, no dishonest prover can convince the verifier that it is true, except with a very low probability.
+3. **Zero-Knowledge**: If the statement is true, the verifier learns nothing beyond the veracity of the statement. They obtain no additional information about the underlying secret or data.
 
-## Tipos de ZKPs
 
-1. **Pruebas Interactivas**: Estas requieren una interacción entre el prover y el verifier. Un ejemplo clásico es el protocolo de Feige-Fiat-Shamir.
-2. **Pruebas No Interactivas (NIZK)**: Estas no requieren interacción y suelen utilizarse en escenarios donde la interacción no es práctica. Un ejemplo importante es el esquema zk-SNARK (Succinct Non-interactive Argument of Knowledge).
-    
+## Types of ZKPs
+
+1. **Interactive Proofs**: These require interaction between the prover and the verifier. A classic example is the Feige-Fiat-Shamir protocol.
+2. **Non-Interactive Proofs (NIZK)**: These do not require interaction and are typically used in scenarios where interaction is impractical. An important example is the zk-SNARK (Succinct Non-interactive Argument of Knowledge) scheme.
+
     ### Feige-Fiat-Shamir
     
-    El protocolo de Feige-Fiat-Shamir es, de hecho, un tipo de prueba de conocimiento cero. Se ajusta a los mismos principios básicos que las pruebas de conocimiento cero, donde el demostrador puede probar la veracidad de una afirmación (en este caso, su identidad o conocimiento de un secreto) sin revelar ninguna información adicional sobre el secreto mismo. Por lo tanto, se puede considerar como una prueba de conocimiento cero tradicional.
+    The Feige-Fiat-Shamir protocol is indeed a type of zero-knowledge proof. It adheres to the same basic principles of zero-knowledge proofs, where the prover can prove the truth of a statement (in this case, their identity or knowledge of a secret) without revealing any additional information about the secret itself. Therefore, it can be considered a traditional zero-knowledge proof.
     
     ### ZK-SNARK (Zero-Knowledge Succinct Non-Interactive Argument of Knowledge)
     
-    Las zk-SNARKs son cruciales para mejorar la privacidad y escalabilidad de las transacciones.
+    zk-SNARKs are crucial for improving the privacy and scalability of transactions.
     
-    zk-SNARKs son un tipo específico de prueba de conocimiento cero que es conciso (succinct) y no interactivo (non-interactive). Esto significa que la prueba puede ser verificada rápidamente y no requiere múltiples interacciones entre el probador y el verificador.
+    zk-SNARKs are a specific type of zero-knowledge proof that is succinct and non-interactive. This means the proof can be verified quickly and does not require multiple interactions between the prover and the verifier.
     
-    **En Ethereum:** Con la introducción de zk-rollups, se pueden agrupar múltiples transacciones en una sola prueba zk-SNARK, mejorando la escalabilidad y manteniendo la privacidad.
+    **In Ethereum:** With the introduction of zk-rollups, multiple transactions can be grouped into a single zk-SNARK proof, improving scalability and maintaining privacy.
     
-    ### STARKs **S**calable, **T**ransparent **AR**gument of **K**nowledge → Starknet
+    ### STARKs **S**calable, **T**ransparent **AR**gument of **K**nowledge → Starknet
     
-    son una tecnología criptográfica desarrollada por STARKWARE e implementadas en Starknet.  Se utilizan para crear pruebas de conocimiento cero que son escalables y transparentes, dichas pruebas permiten probar y verificar cálculos de forma eficiente y segura.
+    STARKs are a cryptographic technology developed by STARKWARE and implemented in Starknet. They are used to create zero-knowledge proofs that are scalable and transparent, allowing for efficient and secure proof and verification of computations.
     
-    ### ¿Cómo funcionan los STARKs?
+    ### How do STARKs work?
     
-    1. **Cálculos Fuera de la Cadena (Offchain)**: Grandes cantidades de cálculos se realizan fuera de la cadena principal de Ethereum, lo que es más barato.
-    2. **Generación de Pruebas**: Se genera una prueba que valida que estos cálculos son correctos.
-    3. **Verificación en la Cadena (Onchain)**: Solo la verificación de esta prueba, que es mucho más rápida y barata, se realiza en la cadena principal.
+    1. **Offchain Calculations**: Large amounts of computations are performed off the main Ethereum chain, which is cheaper.
+    2. **Proof Generation**: A proof is generated that validates these computations are correct.
+    3. **Onchain Verification**: Only the verification of this proof, which is much faster and cheaper, is performed on the main chain.
     
-    ### Características Principales de STARKs:
+    ### Key Features of STARKs:
     
-    1. **Escalabilidad**: Los STARKs son diseñados para ser altamente escalables, lo que permite procesar grandes volúmenes de datos y transacciones de manera eficiente
-    2. **Transparencia**: A diferencia de otros métodos de pruebas de conocimiento cero, como los zk-SNARKs, los STARKs no requieren un proceso de configuración confiable (trusted setup). Esto mejora la transparencia y la seguridad, ya que no se depende de una configuración inicial que podría ser vulnerable.
+    1. **Scalability**: STARKs are designed to be highly scalable, allowing for efficient processing of large volumes of data and transactions.
+    2. **Transparency**: Unlike other zero-knowledge proof methods, such as zk-SNARKs, STARKs do not require a trusted setup. This enhances transparency and security, as there is no dependency on an initial setup that could be vulnerable.
     
-    ### Beneficios para Blockchain
+    ### Benefits for Blockchain
     
-    - **Mayor Escalabilidad**: Permiten procesar muchas más transacciones por segundo (TPS).
-    - **Costos Reducidos**: Hacer cálculos offchain y solo verificar onchain reduce significativamente las tarifas.
-    - **Seguridad de Ethereum**: Las transacciones mantienen la seguridad de Ethereum.
+    - **Greater Scalability**: They enable processing many more transactions per second (TPS).
+    - **Reduced Costs**: Performing calculations offchain and only verifying onchain significantly reduces fees.
+    - **Ethereum Security**: Transactions maintain Ethereum's security.
     
-    ### Porqué las transacciones son más baratas usando STARKs:
+    ### Why transactions are cheaper using STARKs:
     
-    ### 1. **Agrupación de Transacciones (Batching)**
+    ### 1. **Transaction Batching**
     
-    En StarkNet, múltiples transacciones se agrupan en una sola prueba de conocimiento cero (en este caso, una prueba STARK). Esta prueba se verifica en la cadena principal de Ethereum, lo que significa que en lugar de pagar por cada transacción individualmente, se paga una tarifa combinada por verificar la prueba que agrupa muchas transacciones. Esto reduce significativamente el costo por transacción.
+    In StarkNet, multiple transactions are grouped into a single zero-knowledge proof (in this case, a STARK proof). This proof is verified on the main Ethereum chain, meaning that instead of paying for each transaction individually, a combined fee is paid for verifying the proof that batches many transactions. This significantly reduces the cost per transaction.
     
-    ### 2. **Compresión de Datos**
+    ### 2. **Data Compression**
     
-    Las pruebas STARK permiten una compresión eficiente de datos. La cantidad de datos que necesita ser almacenada y procesada en la cadena principal de Ethereum es mucho menor, ya que solo se incluye la prueba en lugar de todas las transacciones individuales. Menos datos significa menos costos.
+    STARK proofs allow for efficient data compression. The amount of data that needs to be stored and processed on the main Ethereum chain is much smaller, as only the proof is included instead of all individual transactions. Less data means lower costs.
     
-    ### 3. **Optimización Computacional**
+    ### 3. **Computational Optimization**
     
-    Las operaciones computacionales intensivas se realizan fuera de la cadena principal, en la capa dos (StarkNet). Solo el resultado final (la prueba STARK) se envía a la cadena principal. Esto alivia la carga de trabajo de la red principal de Ethereum y reduce las tarifas de gas asociadas con la ejecución de contratos inteligentes y procesamiento de transacciones.
+    Intensive computational operations are performed off the main chain, on the layer two (StarkNet). Only the final result (the STARK proof) is sent to the main chain. This alleviates the workload of the main Ethereum network and reduces gas fees associated with smart contract execution and transaction processing.
     
-    ### 4. **Descongestión de la Red Principal**
+    ### 4. **Main Network Decongestion**
     
-    Al mover un gran volumen de transacciones a la capa dos, la congestión en la red principal de Ethereum disminuye. Menos congestión significa que las tarifas de gas pueden bajar, ya que la demanda por espacio en los bloques de la cadena principal se reduce.
+    By moving a large volume of transactions to layer two, congestion on the main Ethereum network decreases. Less congestion means that gas fees can drop, as the demand for block space on the main chain is reduced.
     
-    ### 5. **Eficiencia de Escala**
+    ### 5. **Scale Efficiency**
     
-    StarkNet puede manejar miles de transacciones por segundo debido a la naturaleza escalable de las pruebas STARK. Al tener una mayor capacidad para procesar transacciones, los costos por transacción se distribuyen de manera más eficiente entre los usuarios.
+    StarkNet can handle thousands of transactions per second due to the scalable nature of STARK proofs. Having a higher capacity to process transactions distributes the costs more efficiently among users.
     
-    ### Resumen
+    ### Summary
     
-    Mover las transacciones a StarkNet reduce significativamente las tarifas de gas porque:
+    Moving transactions to StarkNet significantly reduces gas fees because:
     
-    - Se agrupan múltiples transacciones en una sola prueba.
-    - Se comprimen los datos.
-    - Las operaciones intensivas se realizan fuera de la cadena principal.
-    - La red principal de Ethereum se descongestiona.
-    - La mayor capacidad de procesamiento reduce los costos por transacción.
-
-### What is Multi-Party Computation (MPC)
-
-### Qué es Fully Homomorphic Encryption (FHE)
+    - Multiple transactions are batched into a single proof.
+    - Data is compressed.
+    - Intensive operations are performed offchain.
+    - The main Ethereum network is decongested.
+    - Higher processing capacity reduces costs per transaction.
