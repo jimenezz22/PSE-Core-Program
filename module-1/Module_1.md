@@ -254,3 +254,61 @@ Are a way to securely hide and later reveal information. They are crucial in cry
 - **Transactions**: In blockchain, commitments can hide sensitive transaction details or user identities. When needed, specific details can be revealed to verify the transaction while keeping other information private.
 
 ![Untitled](Module%201%2026cc4a35cf904d7c905403d5fc105ef9/Untitled.png)
+
+## Elliptic Curve (ECC)
+
+Is an important area of cryptography that leverages the mathematical properties of elliptic curves to create secure cryptographic systems.
+
+ECC is based on the algebraic structure of elliptic curves over finite fields. The key advantage of ECC over traditional cryptographic methods is that it can achieve the same level of security with much smaller key sizes. This leads to faster computations, reduced storage requirements, and lower bandwidth usage.
+
+### Elliptic Curve Discrete Log Problem (ECDLP)
+
+The security of ECC is based on the difficulty of the Elliptic Curve Discrete Log Problem (ECDLP), which is analogous to the Discrete Logarithm Problem (DLP) but applied to elliptic curves. The ECDLP is hard to solve, which makes it a good basis for cryptographic security.
+
+### Elliptic Curve Digital Signature Algorithm (ECDSA)
+
+ECDSA is an adaptation of the Digital Signature Algorithm (DSA) that uses elliptic curves. It offers several benefits:
+
+- **Stronger Security**: Provides equivalent security to DSA but with shorter key lengths.
+- **Efficiency**: Smaller keys and faster computations make it suitable for devices with limited resources, such as mobile devices and IoT devices.
+
+ECDSA is widely implemented in secure communication protocols like SSL/TLS, ensuring data integrity and authenticity.
+
+### Edwards-curve Digital Signature Algorithm (EdDSA)
+
+EdDSA is another digital signature scheme that uses a variant of elliptic curves known as Edwards curves. It offers the following advantages:
+
+- **High Security**: Designed to avoid common implementation pitfalls that affect other signature schemes.
+- **Speed and Efficiency**: Optimized for performance, making it faster than ECDSA in many cases.
+- **Deterministic Signatures**: Unlike ECDSA, which requires a random value for each signature, EdDSA is deterministic, which can help avoid certain types of attacks related to poor random number generation.
+
+### Key points to remember
+
+- ECC offers strong security with smaller key sizes compared to traditional cryptographic methods.
+- ECDLP is the core problem that ensures the security of ECC.
+- ECDSA extends DSA to elliptic curves, providing efficient and secure digital signatures.
+- EdDSA offers improvements over ECDSA, particularly in terms of speed and security.
+
+### Elliptic Curves in Action
+
+Elliptic curve cryptography (ECC) is increasingly being adopted due to its efficiency and security. Key applications include:
+
+- **U.S. Government**: Protects internal communications.
+- **Tor Project**: Ensures anonymity.
+- **Bitcoin**: Proves ownership.
+- **Apple's iMessage**: Provides digital signatures.
+- **DNSCurve**: Encrypts DNS information.
+- **SSL/TLS**: Preferred method for secure web browsing.
+
+ECC offers significant benefits over first-generation algorithms like RSA and Diffie-Hellman, particularly in providing perfect forward secrecy. For instance, Cloudflare uses ECC to enhance online privacy.
+
+### Practical Example with Cloudflare:
+
+- **HTTPS Usage**: Modern browsers like Chrome and Firefox use ECC when accessing HTTPS sites.
+- **ECDHE_RSA**: Combines ECC (for key exchange) and RSA (for server identity verification).
+- **ECDHE_ECDSA**: Would be used if the SSL certificate were based on elliptic curves, utilizing ECC for both key exchange and server identity verification.
+
+### Performance:
+
+- **ECDSA vs. RSA**: ECDSA with a 256-bit key is over 20 times faster than RSA with a 2048-bit key. For example, on a MacBook Pro, ECDSA can perform 42,874 signatures in 10 seconds compared to RSA's 1,864.
+- **Optimized ECC**: Cloudflare's use of assembly-optimized ECC further doubles the speed of ECDHE, saving time, power, and computational resources, thus making the web faster and more secure.
