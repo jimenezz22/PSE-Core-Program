@@ -312,3 +312,39 @@ ECC offers significant benefits over first-generation algorithms like RSA and Di
 
 - **ECDSA vs. RSA**: ECDSA with a 256-bit key is over 20 times faster than RSA with a 2048-bit key. For example, on a MacBook Pro, ECDSA can perform 42,874 signatures in 10 seconds compared to RSA's 1,864.
 - **Optimized ECC**: Cloudflare's use of assembly-optimized ECC further doubles the speed of ECDHE, saving time, power, and computational resources, thus making the web faster and more secure.
+
+## BLS Signatures
+
+BLS (Boneh-Lynn-Shacham) signatures are a type of digital signature scheme that allows multiple signatures to be combined into a single signature. This aggregated signature can then be verified all at once, which is very efficient.
+
+![Screenshot 2024-08-02 at 8.31.45 PM.png](Module%201%2026cc4a35cf904d7c905403d5fc105ef9/Screenshot_2024-08-02_at_8.31.45_PM.png)
+
+### Key Concepts:
+
+1. **Public Keys and Signatures:**
+    - Each user has a public key and generates a signature for a message.
+    - Public keys are used to verify signatures.
+2. **Aggregation:**
+    - **Public Keys:** Multiple public keys can be combined (aggregated) into a single "aggregate public key."
+    - **Signatures:** Multiple signatures can be combined into a single "aggregate signature."
+3. **Verification:**
+    - The aggregate signature can be verified against the aggregate public key and the message.
+    - If the verification is successful, it confirms that all individual signatures are valid.
+
+### How it Works (Based on the Image):
+
+1. **Aggregate Public Key:**
+    - Combine the individual public keys into a single aggregate public key.
+    - This represents the combined authority of all the individual keys.
+2. **Aggregate Signature:**
+    - Combine the individual signatures into a single aggregate signature.
+    - This represents the combined endorsement of all the individual signatures.
+3. **Message Verification:**
+    - Use the aggregate public key and the aggregate signature to verify the message.
+    - If the verification is "YES," it means all the individual signatures are valid.
+    - If the verification is "NO," it means one or more individual signatures are invalid.
+
+### Benefits:
+
+- **Efficiency:** Instead of verifying each signature separately, all signatures can be verified at once, saving time and computational resources.
+- **Scalability:** This is particularly useful in systems where many signatures need to be verified, such as in consensus protocols used in blockchain technology.
